@@ -28,7 +28,7 @@ public class UsuarioService {
 	
 	public void deleteusuario(Integer idusuario) {
 		repositorio.deleteById(idusuario);
-		 					// verificar possível erro
+		 					
 	}
 	
 	public Usuario updateusuario(Usuario usuario) {

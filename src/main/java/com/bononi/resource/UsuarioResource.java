@@ -1,6 +1,8 @@
 package com.bononi.resource;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bononi.principal.Usuario;
+import com.bononi.principal.DTO.UsuarioDTO;
 import com.bononi.service.UsuarioService;
 
 @RestController
@@ -20,9 +23,10 @@ public class UsuarioResource {
 	private UsuarioService servico;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<?> findAll(){
+	public ResponseEntity<List<UsuarioDTO>> findAll(){
 		List<Usuario> list = servico.findAll();
-				return ResponseEntity.ok().body(list);
+		List<UsuarioDTO> listDTO = list.stream().map(u -> new UsuarioDTO(u)).collect(Collectors.toList());
+				return ResponseEntity.ok().body(listDTO);
 	}
 	
 	@RequestMapping(value = "/{idusuario}", method = RequestMethod.GET)
