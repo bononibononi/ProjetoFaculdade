@@ -2,6 +2,7 @@ package com.bononi.resource;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bononi.aluguel.Veiculo;
+import com.bononi.principal.DTO.VeiculoDTO;
 import com.bononi.service.VeiculoService;
 
 @RestController
@@ -22,9 +24,10 @@ public class VeiculoResource {
 	private VeiculoService servico;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<?> findAll(){
+	public ResponseEntity<List<VeiculoDTO>> findAll(){
 		List<Veiculo> list = servico.findAll();
-				return ResponseEntity.ok().body(list);			
+		List<VeiculoDTO> listveicDTO = list.stream().map(veic -> new VeiculoDTO(veic)).collect(Collectors.toList());
+				return ResponseEntity.ok().body(listveicDTO);			
 	}
 	
 	@RequestMapping(value = "/{idveiculo}", method = RequestMethod.GET)

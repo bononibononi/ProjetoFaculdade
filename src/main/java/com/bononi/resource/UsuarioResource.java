@@ -25,8 +25,8 @@ public class UsuarioResource {
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<UsuarioDTO>> findAll(){
 		List<Usuario> list = servico.findAll();
-		List<UsuarioDTO> listDTO = list.stream().map(u -> new UsuarioDTO(u)).collect(Collectors.toList());
-				return ResponseEntity.ok().body(listDTO);
+		List<UsuarioDTO> listusuDTO = list.stream().map(u -> new UsuarioDTO(u)).collect(Collectors.toList());
+				return ResponseEntity.ok().body(listusuDTO);
 	}
 	
 	@RequestMapping(value = "/{idusuario}", method = RequestMethod.GET)

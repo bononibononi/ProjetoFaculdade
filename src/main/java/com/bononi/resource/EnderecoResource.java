@@ -1,6 +1,8 @@
 package com.bononi.resource;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bononi.principal.Endereco;
+import com.bononi.principal.DTO.EnderecoDTO;
 import com.bononi.service.EnderecoService;
 
 @RestController
@@ -20,9 +23,10 @@ public class EnderecoResource {
 	private EnderecoService servico;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<?> findAll(){
+	public ResponseEntity<List<EnderecoDTO>> findAll(){
 		List<Endereco> list = servico.findAll();
-				return ResponseEntity.ok().body(list);
+		List<EnderecoDTO> listendereDTO = list.stream().map(endere -> new EnderecoDTO(endere)).collect(Collectors.toList());
+				return ResponseEntity.ok().body(listendereDTO);
 	}
 	
 	@RequestMapping(value = "/{idendereco}", method = RequestMethod.GET)
