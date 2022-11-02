@@ -14,16 +14,17 @@ public class Cadastro implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long Id;
+	private Integer Id;
 	private String nome;		
 	private String endereco;
+	private String cpfOuCnpj;
 	private Boolean ativo;
 		
 	public Cadastro() {
 		super();
 		}
 	
-	public Cadastro(Long id, String nome, String endereco, Boolean ativo) {
+	public Cadastro(Integer id, String nome, String endereco, Boolean ativo) {
 		super();
 		Id = id;
 		this.nome = nome;
@@ -53,11 +54,11 @@ public class Cadastro implements Serializable {
 			return Objects.equals(Id, other.Id);
 		}
 
-		public Long getId() {
+		public Integer getId() {
 			return Id;
 		}
 
-		public void setId(Long id) {
+		public void setId(Integer id) {
 			Id = id;
 		}
 
@@ -83,5 +84,13 @@ public class Cadastro implements Serializable {
 
 		public void setAtivo(Boolean ativo) {
 			this.ativo = ativo;
+		}
+
+		public String getCpfOuCnpj() {
+			return cpfOuCnpj;
+		}
+
+		public void setCpfOuCnpj(String cpfOuCnpj) {
+			this.cpfOuCnpj = cpfOuCnpj;
 		}	
 	}
