@@ -1,7 +1,6 @@
-package com.bononi.servicostaxas;
+package com.bononi.principal;
 
-import com.bononi.aluguel.Aluguelcarro;
-import com.bononi.aluguel.Fatura;
+import com.bononi.servicostaxas.Taxaservicos;
 
 public class Servicosaluguel {
 

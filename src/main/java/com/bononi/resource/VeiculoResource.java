@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bononi.aluguel.Veiculo;
+import com.bononi.principal.Veiculo;
 import com.bononi.principal.DTO.VeiculoDTO;
 import com.bononi.service.VeiculoService;
 

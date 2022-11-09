@@ -1,4 +1,4 @@
-package com.bononi.aluguel;
+package com.bononi.principal;
 
 import java.util.Objects;
 

@@ -2,7 +2,7 @@ package com.bononi.principal.DTO;
 
 import java.io.Serializable;
 
-import com.bononi.aluguel.Veiculo;
+import com.bononi.principal.Veiculo;
 
 public class VeiculoDTO implements Serializable {
 
