@@ -9,10 +9,10 @@
 		<version>2.2.4.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ramazzotte</groupId>
-	<artifactId>projetoAulaCompleto</artifactId>
+	<groupId>com.bononi</groupId>
+	<artifactId>Projeto</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>projetoAulaCompleto</name>
+	<name>Projeto</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
@@ -22,8 +22,7 @@
 		<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>javax.persistence-api</artifactId>
-			<version>2.2</version>
-		</dependency>
+			</dependency>
 		<dependency>
 			<groupId>org.flywaydb</groupId>
 			<artifactId>flyway-core</artifactId>
