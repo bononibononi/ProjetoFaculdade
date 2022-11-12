@@ -1,56 +1,68 @@
 package com.bononi.principal;
 
+import java.io.Serializable;
+import java.time.Instant;
 import java.util.Objects;
 
-import com.bononi.servicostaxas.Taxasbrasil;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-public class Fatura {
+@Entity
+@Table(name = "fatura")
+public class Fatura implements Serializable {
 
-	private Double pagamentoBasico;
-	private Double taxa;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private static final long serialVersionUID = 1L;
+	private Long id;
+	private Instant moment;
+	@OneToOne
+	@MapsId
+	private Veiculo veiculo;
 	
 	public Fatura() {
 		super();
 	}
 
-	public Fatura(Double pagamentoBasico, Double taxa) {
+	public Fatura(Long id, Instant moment, Fatura fatura, Veiculo veiculo) {
 		super();
-		this.pagamentoBasico = pagamentoBasico;
-		this.taxa = taxa;
+		this.id = id;
+		this.moment = moment;
+		this.veiculo = veiculo;
 	}
 
-	public Fatura(double pagamentoBasico, Taxasbrasil taxa) {
-		
+	public Long getId() {
+		return id;
 	}
 
-	@Override
-	public String toString() {
-		return "Fatura [pagamentoBasico=" + pagamentoBasico + ", taxa=" + taxa + "]";
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public Double getPagamentoBasico() {
-		return pagamentoBasico;
+	public Instant getMoment() {
+		return moment;
 	}
 
-	public void setPagamentoBasico(Double pagamentoBasico) {
-		this.pagamentoBasico = pagamentoBasico;
+	public void setMoment(Instant moment) {
+		this.moment = moment;
 	}
 
-	public Double getTaxa() {
-		return taxa;
+	public Veiculo getVeiculo() {
+		return veiculo;
 	}
 
-	public void setTaxa(Double taxa) {
-		this.taxa = taxa;
-	}
-	
-	public Double getTotalPagamento() {
-		return getPagamentoBasico() + getTaxa();
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(pagamentoBasico, taxa);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -62,6 +74,6 @@ public class Fatura {
 		if (getClass() != obj.getClass())
 			return false;
 		Fatura other = (Fatura) obj;
-		return Objects.equals(pagamentoBasico, other.pagamentoBasico) && Objects.equals(taxa, other.taxa);
+		return Objects.equals(id, other.id);
 	}	
 }
