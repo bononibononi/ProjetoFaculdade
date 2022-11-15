@@ -14,6 +14,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 	List<Usuario> findAllUsuarios();
 	@Query(value = "SELECT*FROM usuario where id = ?", nativeQuery = true)
 	Usuario findAllUsuario(Integer idusuario);
+	Usuario findByEmail(String email);
 	
 	
 	

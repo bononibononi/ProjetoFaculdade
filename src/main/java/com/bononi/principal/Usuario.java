@@ -10,6 +10,9 @@ package com.bononi.principal;
 	import javax.persistence.GenerationType;
 	import javax.persistence.Id;
 
+	import javax.validation.Valid;
+	import com.bononi.principal.DTO.UsuarioDTO;
+	import com.bononi.principal.DTO.UsuarioNewDTO;
 	import com.fasterxml.jackson.annotation.JsonIgnore;
 
 	@Entity
@@ -100,5 +103,19 @@ package com.bononi.principal;
 				return false;
 			Usuario other = (Usuario) obj;
 			return Objects.equals(Id, other.Id);
+		}
+		
+		public Usuario(@Valid UsuarioDTO usu1) {
+			this.Id = usu1.getId();
+			this.nome = usu1.getNome();
+			this.email = usu1.getEmail();
+			this.senha = usu1.getSenha();
+		
+		}
+		public Usuario(@Valid UsuarioNewDTO usu1) {
+			this.Id = usu1.getId();
+			this.nome = usu1.getNome();
+			this.email = usu1.getEmail();
+			this.senha = usu1.getSenha();
 		}
 	}

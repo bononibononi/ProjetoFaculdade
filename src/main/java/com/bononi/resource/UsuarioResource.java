@@ -3,6 +3,8 @@ package com.bononi.resource;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bononi.principal.Usuario;
 import com.bononi.principal.DTO.UsuarioDTO;
+import com.bononi.principal.DTO.UsuarioNewDTO;
 import com.bononi.service.UsuarioService;
 
 @RestController
@@ -36,12 +39,12 @@ public class UsuarioResource {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<?> addusuario(@RequestBody Usuario usu){
-		System.out.println(usu);
-		Usuario usuario = servico.addusuario(usu);
+	public ResponseEntity<?> addusuario(@Valid @RequestBody UsuarioNewDTO usu1){
+		Usuario usua = new Usuario(usu1);
+		Usuario usuario = servico.addusuario(usua);
 		return ResponseEntity.ok().body(usuario);
 	}
-	
+			
 	@RequestMapping(value = "/{idusuario}", method = RequestMethod.DELETE)
 	public void deleteusuario(@PathVariable Integer idusuario) {
 		servico.deleteusuario(idusuario);
@@ -49,10 +52,11 @@ public class UsuarioResource {
 	
 	@RequestMapping(value = "/{idusuario}", method = RequestMethod.PUT)
 	public ResponseEntity<?> updateusuario(
-								@PathVariable Integer idusuario, 
-								@RequestBody Usuario usu){
-		usu.setId(idusuario);
-		Usuario usuario = servico.updateusuario(usu);
+								@PathVariable Integer idusuario, @Valid
+								@RequestBody UsuarioDTO usu1){
+		usu1.setId(idusuario);
+		Usuario usua = new Usuario(usu1);
+		Usuario usuario = servico.updateusuario(usua);
 		return ResponseEntity.ok().body(usuario);
 	}
 }
