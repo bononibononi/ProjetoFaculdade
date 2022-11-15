@@ -36,6 +36,27 @@ public class Veiculo implements Serializable {
 	@Override
 	public String toString() {
 		return "Veiculo [Id=" + Id + ", marca=" + marca + ", modelo=" + modelo + ", acessorios=" + acessorios + "]";
+<<<<<<< Updated upstream
+=======
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(Id, acessorios, marca, modelo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Veiculo other = (Veiculo) obj;
+		return Objects.equals(Id, other.Id) && Objects.equals(acessorios, other.acessorios)
+				&& Objects.equals(marca, other.marca) && Objects.equals(modelo, other.modelo);
+>>>>>>> Stashed changes
 	}
 
 	public Integer getId() {
@@ -69,6 +90,7 @@ public class Veiculo implements Serializable {
 	public void setAcessorios(String acessorios) {
 		this.acessorios = acessorios;
 	}
+<<<<<<< Updated upstream
 
 	@Override
 	public int hashCode() {
@@ -86,4 +108,6 @@ public class Veiculo implements Serializable {
 		Veiculo other = (Veiculo) obj;
 		return Objects.equals(Id, other.Id);
 	}	
+=======
+>>>>>>> Stashed changes
 }
